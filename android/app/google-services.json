@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "663049332224",
+    "project_id": "minestream-app",
+    "storage_bucket": "minestream-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:663049332224:android:64e74baa734eedd0509ae5",
+        "android_client_info": {
+          "package_name": "com.aacfahim.minestream"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "663049332224-9f5vnv9e33tsfnc4gud4891b79p5ieeo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.aacfahim.minestream",
+            "certificate_hash": "f00b96f0be20b824780c66192a720b49005e102e"
+          }
+        },
+        {
+          "client_id": "663049332224-0f72hiunl5q8miprpvm8c9dc8mohkp20.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnIV93kTxHVYzqNp06qlwqZtk940vpNxc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "663049332224-0f72hiunl5q8miprpvm8c9dc8mohkp20.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

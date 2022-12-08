@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:minestream/resources/auth_methods.dart';
 import 'package:minestream/widgets/custom_button.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -13,6 +14,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final AuthMethods _authMethods = AuthMethods();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,8 +30,15 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Image.asset("assets/images/minestream_logo_white.png"),
         ),
         CustomButton(
-          text: "Sign in",
-          onPressed: () {},
+          text: "Sign in using Google",
+          onPressed: () async {
+            bool res = await _authMethods.signInWithGoogle(context);
+            if (res == true) {
+              Navigator.pushNamed(context, '/home');
+            } else {
+              // nothing
+            }
+          },
         )
       ]),
     );

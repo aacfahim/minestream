@@ -4,7 +4,7 @@ import 'package:minestream/resources/auth_methods.dart';
 
 class JitsiMeetMethods {
   final AuthMethods _authMethods = AuthMethods();
-  void createNewMeeting(
+  void createMeeting(
       {required String roomName,
       required bool isAudioMuted,
       required bool isVideoMuted}) async {

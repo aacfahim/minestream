@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:minestream/resources/auth_methods.dart';
 import 'package:minestream/screens/home_screen.dart';
 import 'package:minestream/screens/login_screen.dart';
+import 'package:minestream/screens/video_call_screen.dart';
 import 'package:minestream/utils/colors.dart';
 
 void main() async {
@@ -23,8 +24,9 @@ class MyApp extends StatelessWidget {
       theme:
           ThemeData.dark().copyWith(scaffoldBackgroundColor: backgroundColor),
       routes: {
-        '/login': (context) => LoginScreen(),
-        '/home': (context) => HomeScreen(),
+        '/login': (context) => const LoginScreen(),
+        '/home': (context) => const HomeScreen(),
+        '/video-call': (context) => const VideoCallScreen(),
       },
       home: StreamBuilder(
         stream: AuthMethods().authChanges,

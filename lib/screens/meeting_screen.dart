@@ -19,6 +19,10 @@ class MeetingScreen extends StatelessWidget {
         roomName: roomName, isAudioMuted: true, isVideoMuted: true);
   }
 
+  joinMeeting(BuildContext context) {
+    Navigator.pushNamed(context, '/video-call');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -32,7 +36,7 @@ class MeetingScreen extends StatelessWidget {
               HomeMeetingButton(
                   text: "Join Meeting",
                   iconData: Icons.video_camera_front_rounded,
-                  onPressed: () {}),
+                  onPressed: () => joinMeeting(context)),
               HomeMeetingButton(
                   text: "Schedule",
                   iconData: Icons.calendar_month,
@@ -41,7 +45,7 @@ class MeetingScreen extends StatelessWidget {
           ),
           SizedBox(height: 20),
           HomeMeetingButton(
-              text: "Schedule",
+              text: "Screen Share",
               iconData: Icons.screen_share_rounded,
               onPressed: () {}),
         ],

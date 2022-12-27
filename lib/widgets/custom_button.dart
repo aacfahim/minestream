@@ -11,7 +11,7 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 8),
       child: ElevatedButton(
         onPressed: onPressed,
         child: Text(text, style: const TextStyle(fontSize: 17)),
@@ -19,7 +19,7 @@ class CustomButton extends StatelessWidget {
             backgroundColor: buttonColor,
             minimumSize: Size(double.infinity, 50.0),
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(30),
                 side: BorderSide(color: buttonColor))),
       ),
     );

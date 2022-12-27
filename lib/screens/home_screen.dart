@@ -2,9 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:minestream/resources/auth_methods.dart';
 import 'package:minestream/screens/history_meeting_screen.dart';
 import 'package:minestream/screens/meeting_screen.dart';
 import 'package:minestream/utils/colors.dart';
+import 'package:minestream/widgets/custom_button.dart';
 import 'package:minestream/widgets/home_meeting_button.dart';
 import 'package:minestream/widgets/new_conference_button.dart';
 
@@ -26,8 +28,11 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Widget> pages = [
     MeetingScreen(),
     HistoryMeetingScreen(),
-    Text("Contacts"),
-    Text("Preferences"),
+    CustomButton(
+        text: "Logout",
+        onPressed: () {
+          AuthMethods().signOut();
+        })
   ];
 
   @override
@@ -63,13 +68,11 @@ class _HomeScreenState extends State<HomeScreen> {
           showUnselectedLabels: true,
           items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.comment_bank), label: "Conversations"),
+                icon: Icon(Icons.home_filled), label: "Home"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.meeting_room_outlined), label: "Meetings"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.contacts), label: "Contacts"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.settings), label: "Preferences"),
+                icon: Icon(Icons.logout_rounded), label: "Logout"),
           ]),
       body: pages[_page],
     );

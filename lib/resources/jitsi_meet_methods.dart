@@ -1,18 +1,30 @@
 import 'package:jitsi_meet/jitsi_meet.dart';
 import 'package:jitsi_meet/feature_flag/feature_flag.dart';
 import 'package:minestream/resources/auth_methods.dart';
+import 'package:minestream/resources/firestore_methods.dart';
 
 class JitsiMeetMethods {
   final AuthMethods _authMethods = AuthMethods();
-  void createMeeting(
-      {required String roomName,
-      required bool isAudioMuted,
-      required bool isVideoMuted}) async {
+  final FirestoreMethods _firestoreMethods = FirestoreMethods();
+  void createMeeting({
+    required String roomName,
+    required bool isAudioMuted,
+    required bool isVideoMuted,
+    String userName = "",
+  }) async {
     try {
       FeatureFlag featureFlag = FeatureFlag();
       featureFlag.welcomePageEnabled = false;
       featureFlag.resolution = FeatureFlagVideoResolution
           .MD_RESOLUTION; // Limit video resolution to 360p
+
+      String name;
+
+      if (userName.isEmpty) {
+        name = _authMethods.user.displayName!;
+      } else {
+        name = userName;
+      }
 
       var options = JitsiMeetingOptions(room: roomName)
         ..userDisplayName = _authMethods.user.displayName
@@ -21,6 +33,7 @@ class JitsiMeetMethods {
         ..audioMuted = isAudioMuted
         ..videoMuted = isVideoMuted;
 
+      _firestoreMethods.addToMeetingHistory(roomName);
       await JitsiMeet.joinMeeting(options);
     } catch (error) {
       print("error: $error");

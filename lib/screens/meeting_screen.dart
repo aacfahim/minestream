@@ -43,11 +43,6 @@ class MeetingScreen extends StatelessWidget {
                   onPressed: () {}),
             ],
           ),
-          SizedBox(height: 20),
-          HomeMeetingButton(
-              text: "Screen Share",
-              iconData: Icons.screen_share_rounded,
-              onPressed: () {}),
         ],
       ),
     );

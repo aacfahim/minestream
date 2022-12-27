@@ -2,7 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:jitsi_meet/jitsi_meet.dart';
 import 'package:minestream/resources/auth_methods.dart';
+import 'package:minestream/resources/jitsi_meet_methods.dart';
 import 'package:minestream/utils/colors.dart';
 import 'package:minestream/widgets/custom_button.dart';
 import 'package:minestream/widgets/meeting_option.dart';
@@ -18,6 +20,7 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
   final AuthMethods _authMethods = AuthMethods();
   late TextEditingController meetingIdController;
   late TextEditingController nameController;
+  final JitsiMeetMethods _jitsiMeetMethods = JitsiMeetMethods();
   bool isAudioMuted = true;
   bool isVideoMuted = true;
 
@@ -28,7 +31,21 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
     super.initState();
   }
 
-  _joinMeeting() {}
+  @override
+  void dispose() {
+    super.dispose();
+    meetingIdController.dispose();
+    nameController.dispose();
+    JitsiMeet.removeAllListeners();
+  }
+
+  _joinMeeting() {
+    _jitsiMeetMethods.createMeeting(
+        roomName: meetingIdController.text,
+        isAudioMuted: isAudioMuted,
+        isVideoMuted: isVideoMuted,
+        userName: nameController.text);
+  }
 
   onAudioMuted(bool? val) {
     setState(() {

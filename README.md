@@ -1,4 +1,6 @@
 # MineStream: Video Calling App for Android and iOS
+![minestream_logo_black](https://user-images.githubusercontent.com/37849194/210347054-a3a67834-46e6-48da-8e6d-fdb715af80e3.jpg)
+
 
 
 ## Features
